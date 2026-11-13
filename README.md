@@ -1,9 +1,9 @@
 # SpaceMac - Recupera tu Mac
 
-![Swift](https://img.shields.io/badge/Swift-5.9-orange)
-![macOS](https://img.shields.io/badge/macOS-14.0+-blue)
-![【entity-Apple¦canonical_name=Apple】 Silicon](https://img.shields.io/badge/Apple_Silicon-M1_M2_M3-black)
-![License](https://img.shields.io/badge/License-Propietario-lightgrey)
+[Swift](https://img.shields.io/badge/Swift-5.9-orange)
+[macOS](https://img.shields.io/badge/macOS-14.0+-blue)
+[Apple Silicon](https://img.shields.io/badge/Apple_Silicon-M1_M2_M3-black)
+[License](https://img.shields.io/badge/License-Propietario-lightgrey)
 
 **SpaceMac** es una app real para Mac, hecha en Swift, para liberar espacio sin romper tu sistema ni tus apps.
 
@@ -36,7 +36,7 @@ SpaceMac **NUNCA** toca:
 - `/Applications/*.app` - Tus apps instaladas
 - `Application Support`
 - Extensiones de VS Code
-- Presets de 【entity-Adobe¦canonical_name=Adobe】
+- Presets de Adobe
 
 Si un archivo es del sistema, se marca en rojo como **🔴 No tocar** y no se puede seleccionar ni borrar.
 
@@ -56,7 +56,7 @@ Si no estamos seguros, se marca como **NO BORRABLE**.
 | **R06** | Permisos solo cuando se necesitan, explicados en palabras simples, sin cuenta / login | ✅ |
 | **R07** | IA integrada, gratis, on-device, offline, sin API key | ✅ |
 | **R08** | Duplicados Inteligentes gratis - exactos, similares, versiones, dev | ✅ |
-| **R09** | Rutas por perfil: Web + Mobile iOS + 【entity-Android¦canonical_name=Android】 + React Native + Backend, Devs, Diseñadores, Arquitectos | ✅ |
+| **R09** | Rutas por perfil: Web + Mobile iOS + Android + React Native + Backend, Devs, Diseñadores, Arquitectos | ✅ |
 | **R10** | Historial de limpieza gratis, local | ✅ |
 | **R11** | Aviso de poco espacio gratis, sin spam, 1 vez cada 24h | ✅ |
 | **R12** | Feature Flags desde el inicio | ✅ |
@@ -93,8 +93,8 @@ Comparación por **hash de contenido**, no por nombre.
 
 Todos pueden usar todas las rutas, no hay bloqueo por perfil.
 
-- **Dev Web + Mobile:** iOS + 【entity-Android¦canonical_name=Android】 + React Native + Backend
-- **Diseñador:** 【entity-Adobe¦canonical_name=Adobe】, 【entity-Figma¦canonical_name=Figma】, cachés de diseño
+- **Dev Web + Mobile:** iOS + Android + React Native + Backend
+- **Diseñador:** Adobe, Figma, cachés de diseño
 - **Arquitecto:** CAD, renders, modelos 3D
 - **Usuario común:** Descargas, Escritorio, Documentos
 
@@ -143,7 +143,7 @@ En Gratis tienes **1 carpeta privada de prueba**.
 
 ### Requisitos
 
-- Mac con 【entity-Apple¦canonical_name=Apple】 Silicon M1 o superior
+- Mac con Apple Silicon M1 o superior
 - macOS 14.0 o superior
 - Xcode 15 o superior
 - 256 GB de disco recomendado, 18 GB libres mínimo para probar
@@ -154,3 +154,91 @@ En Gratis tienes **1 carpeta privada de prueba**.
 git clone https://github.com/EriickChavez/SpaceMac.git
 cd SpaceMac
 open SpaceMac.xcodeproj
+```
+
+En Xcode:
+1. Selecciona tu Mac como destino
+2. Dale `Cmd + R` para correr
+3. Dale permisos cuando te los pida, solo los que necesite
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+SpaceMac/
+├── SpaceMac/
+│   ├── App/
+│   │   └── ContentView.swift      # Sidebar + Detail, V5 modular
+│   ├── Engines/
+│   │   ├── ProtectionEngine.swift # R01 - Qué se puede borrar y qué no
+│   │   ├── ScannerEngine.swift    # R04 - Escaneo total
+│   │   ├── DuplicateEngine.swift  # R08 - Duplicados por hash
+│   │   ├── AntSpaceEngine.swift   # Espacio Hormiga
+│   │   ├── HistoryEngine.swift    # R10 - Historial
+│   │   └── PremiumEngine.swift    # R15 - Premium
+│   ├── AI/
+│   │   ├── EmbeddedAIService.swift
+│   │   └── ModelDownloader.swift  # R07 - Descarga modelo ~1GB
+│   ├── Views/
+│   │   ├── HeaderView.swift
+│   │   ├── FiltersView.swift
+│   │   ├── StatsView.swift
+│   │   ├── FilesListView.swift    # Lista + Multiselector + Preview
+│   │   ├── DuplicatesView.swift
+│   │   ├── RoutesView.swift
+│   │   ├── AntSpaceView.swift
+│   │   ├── AntFolderDetailView.swift
+│   │   ├── HistoryView.swift
+│   │   └── PrivateFoldersView.swift
+│   └── Models/
+│       └── ScannedFile.swift
+```
+
+Cada archivo es modular. `ContentView` no se edita para cada cambio, cada View es su propio archivo.
+
+---
+
+## ⌨️ Cómo usarlo
+
+1. **Escanear:** Dale a Escanear y espera a que termine
+2. **Buscar:** Busca por **nombre de archivo**, no por ruta
+3. **Filtrar:** Por categoría, por tamaño, por riesgo, solo borrables
+4. **Ver:** Dale a **Ver** para previsualizar con QuickLook, como en Finder
+5. **Seleccionar:** Dale a **Seleccionar varios**, marca con checkbox solo los que quieres
+6. **Borrar:** Dale a **Borrar seleccionados**, confirma, y se mandan a Papelera
+7. **Revisar:** Los 🔴 No tocar y 🔒 Privados nunca se pueden seleccionar
+
+**Nunca se borra para siempre.** Todo se manda a Papelera.
+
+---
+
+## 🔒 Privacidad
+
+- Sin cuenta, sin login, sin Sign in with Apple
+- Sin tracking
+- Todo se guarda local, en tu Mac
+- La IA corre en tu Mac, no manda nada a internet
+- Sandbox activado para Mac App Store
+
+---
+
+## 📦 App Store - R13
+
+- **Nombre:** SpaceMac - Recupera tu Mac
+- **Bundle ID:** `com.EriickChavez.SpaceMac`
+- **Categoría:** Utilidades
+
+---
+
+## 👨‍💻 Autor
+
+**Erick Chávez** - [@EriickChavez](https://github.com/EriickChavez)
+
+Hecho en Torreón, México. 🇲🇽
+
+---
+
+## 📄 Licencia
+
+Propietario. Todos los derechos reservados.
