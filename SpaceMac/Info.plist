@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>SpaceMac necesita leer tu Escritorio para mostrarte qué te quita espacio</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>Necesita ver tus Descargas para encontrar instaladores viejos... Nunca borra sin tu permiso, uno por uno.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>Necesita ver tus Documentos... Nunca borra el original ni rompe tus apps.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Solo para hablar con Ollama (IA gratuita en tu Mac), sin subir nada a internet.</string>
+</dict>
+</plist>

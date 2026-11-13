@@ -1,0 +1,22 @@
+# Xcode
+.DS_Store
+xcuserdata/
+*.xcworkspace
+DerivedData/
+*.xcodeproj/project.xcworkspace/
+
+# Build
+build/
+*.app
+*.dSYM
+
+# Modelo IA - NO se sube, pesa ~1GB
+*.gguf
+*.bin
+*.safetensors
+
+# Keys, secretos, cuentas
+*.pem
+*.p12
+*.mobileprovision
+GoogleService-Info.plist
